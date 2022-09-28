@@ -1,0 +1,95 @@
+<% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/CSS/stars.css">
+    <div class="card py-5 px-5">
+        <div class="row justify-content-center fs-5">
+
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="row">
+                    <h2 class="mynavy fs-3">Leave a Review on My Website</h2>
+                    <form action="/reviews?_method=PUT" method="post" class="mb-3 validated-form" novalidate>
+                        <div class="mb-3 row">
+                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name" name="review[author]">
+                            </div>
+                        </div>
+                        <div class="row mb-3 d-flex align-items-center">
+                            <div class=" col-lg-4 col-md-6 col-sm-6 ">
+                                <label class="form-label" for="rating">Leave a Review</label>
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-sm-6 ">
+                                <fieldset class="starability-fade">
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rate]" value="0"
+                                        aria-label="No rating." />
+                                    <input type="radio" id="second-rate1" name="review[rate]" value="1" checked />
+                                    <label for="second-rate1" title="Terrible">1 star</label>
+                                    <input type="radio" id="second-rate2" name="review[rate]" value="2" />
+                                    <label for="second-rate2" title="Not good">2 stars</label>
+                                    <input type="radio" id="second-rate3" name="review[rate]" value="3" />
+                                    <label for="second-rate3" title="Average">3 stars</label>
+                                    <input type="radio" id="second-rate4" name="review[rate]" value="4" />
+                                    <label for="second-rate4" title="Very good">4 stars</label>
+                                    <input type="radio" id="second-rate5" name="review[rate]" value="5" />
+                                    <label for="second-rate5" title="Amazing">5 stars</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="body">Review</label>
+                            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="4"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                looks good
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-success">submit</button>
+                        </div>
+                    </form>
+                </div>
+                <% if(reviews.length>0){ %>
+                    <hr class="my-5">
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-12 col-sm-12 text-md-center text-sm-center">
+                            <span class="mynavy fs-3">Website Visitors Reviews</span>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-end">
+                            <p class="starability-result" data-rating="<%=averageRate %>">
+                                Rated: <%= averageRate %> stars
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <span class="text-muted d-inline">(<%= reviews.length %> Rates )</span>
+
+                        </div>
+                    </div>
+
+                    <% for (let review of reviews){ %>
+                        <% if(review.body){ %>
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <p class="starability-result mt-3" data-rating="<%= review.rate %>">
+                                        Rated: <%= review.rate %> stars
+                                    </p>
+                                    <h6 class="card-subtitle mb-2 text-muted text-end"> By
+                                        <%= review.author %>
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <%= review.body %>
+                                    </p>
+                                    <% if(currentUser){ %>
+                                        <form class="d-inline" action="/reviews/<%= review._id %>?_method=DELETE"
+                                            method="post">
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% } %>
+                                    <% } %>
+            </div>
+        </div>
+    </div>

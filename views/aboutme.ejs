@@ -1,0 +1,284 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row mt-mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="accordion" id="accordionExample">
+                        <!-- personal Information -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header " id="headingOne">
+                                <button class="accordion-button fs-2 mygold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Personal Information
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div>
+                                            <div class="card-title align-items-center text-center">
+                                                <img src="/imgs/Zahra's Grad 2022-sqr.jpeg" alt="profile picture"
+                                                    class="img-thumbnail rounded-circle" style="max-width:20rem;">
+                                                <h1 class="fs-1 text-center fw-bold mygold">
+                                                    <%= resume.firstName %>
+                                                        <%= resume.lastName %>
+                                                </h1>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row mb-5">
+                                                    <div class="col-12 fs-3 fw-bold mynavy">
+                                                        About
+                                                    </div>
+                                                    <div class="col-12 fs-5 lh-lg mx-3">
+                                                        I want to build a successful career and learn step by step how
+                                                        to improve my skills to be qualified for a long-term
+                                                        professional job that will enhance my knowledge to serve in
+                                                        achieving organizational objectives as well as my personal
+                                                        goals. <br> Technology usage is expanding every day and I want
+                                                        to be an effective part of the future.
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 fs-3 fw-bold mynavy">
+                                                        Personal Details
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 fs-4 fw-bold mynavy">
+                                                        Job Title
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-8 fs-5">
+                                                        <%= resume.jobTitle %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 fs-4 fw-bold mynavy">
+                                                        Age
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-8 fs-5">
+                                                        <% const year=new Date().getFullYear(); %>
+                                                            <%= year - resume.yearOfBirth %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 fs-4 fw-bold mynavy">
+                                                        City
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-8 fs-5">
+                                                        <%= resume.city %>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 fs-4 fw-bold mynavy">
+                                                        Country
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-8 fs-5">
+                                                        <%= resume.country %>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- education -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed fs-2 mygold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Education
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <% if(resume.education){ %>
+                                            <div>
+                                                <% for (let degree of resume.education){ %>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-10 col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-12 fs-3 fw-bold mynavy">
+                                                                        <%= degree.degree %>'s Degree in <%=
+                                                                                degree.major %>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 fs-5 fw-light mynavy">
+                                                                        <%= degree.university %> <span
+                                                                                class="text-muted"> |
+                                                                                <%= degree.startYear %> - <%=
+                                                                                        degree.endYear %>
+                                                                            </span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12">
+                                                                <div class="row">
+                                                                    <div class="fs-4 fw-bold mynavy">
+                                                                        <%= degree.myGPA %>
+                                                                            <span class="fs-4 text-muted">
+                                                                                /<%= degree.mainGPA %>
+                                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+                                            <% } else{%>
+                                                <div class="card-body">
+                                                    <h1 class="fs-1 text-center fw-bold mynavy">No Education Found !
+                                                    </h1>
+                                                </div>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- experiance -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed fs-2 mygold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Experiance
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <% if(resume.experiance){ %>
+                                            <div>
+                                                <% for (let exp of resume.experiance){ %>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-8 col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-12 fs-3 fw-bold mynavy">
+                                                                        <%= exp.company %>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 fs-5 fw-light mynavy">
+                                                                        <%= exp.jobType %> <span class="mygold">
+                                                                                |
+                                                                                <%= exp.jobRole %>
+                                                                            </span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-12">
+                                                                <div class="row">
+                                                                    <div class="fs-4 mynavy">
+                                                                        <%= exp.startMonth %>/<%= exp.startYear %> -
+                                                                                <%= exp.endMonth %>/<%= exp.endYear %>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-3">
+                                                            <% for (let list of exp.description){ %>
+                                                                <div class="fs-5 fw-light mynavy lh-lg">
+                                                                    ✓ <%= list %>
+                                                                </div>
+                                                                <% } %>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+                                            <% } else{%>
+                                                <div class="card-body">
+                                                    <h1 class="fs-1 text-center fw-bold mynavy">No Experiance
+                                                        Found !</h1>
+                                                </div>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Senior Project -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed fs-2 mygold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    Senior Project
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="card-body">
+                                        <div class="row mb-5">
+                                            <div class="col-12 fs-3 fw-bold mygold">
+                                                BidChain
+                                            </div>
+                                            <div class="row mx-3">
+                                                <div class="col-12 fs-5 lh-lg">
+                                                    An innovative bidding processing platform based on blockchain
+                                                    technology. Which aims to automate the sophisticated bidding process
+                                                    offering high data integrity & confidentiality using: MetaMask
+                                                    crypto
+                                                    wallet to prevent manipulation attempts in bidding, Ganach for
+                                                    private
+                                                    Blockchain, & Solidity for smart contract creation. This idea is
+                                                    <span class="fw-bold">Patent
+                                                        Pending</span> with the US Patent Office.
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 text-center mt-5"
+                                                    style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+                                                    <iframe height="100%" width="100%" class="d-flex"
+                                                        src="https://www.youtube.com/embed/a78kuKWnuuM" frameborder="0"
+                                                        allowfullscreen="" style="position:absolute; top:0; left: 0;">
+                                                    </iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Technical skills -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed fs-2 mygold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
+                                    Technical Skills
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row align-items-center justify-content-center">
+                                        <% for(let icon of filenames) {%>
+                                            <div class="col-lg-1 col-md-2 col-sm-3">
+                                                <img src="/imgs/skillsIcons/<%= icon %>"
+                                                    class="img-thumbnail border border-0" width="200" height="200"
+                                                    alt="<%= icon %>">
+                                            </div>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

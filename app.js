@@ -39,43 +39,6 @@ db.once("open", () => {
     console.log("Database Connected");
 });
 
-const seedDB = catchAsync(async () => {
-    await Resume.deleteMany({});
-    // const random1000 = Math.floor(Math.random() * 1000);
-    const resume = new Resume({
-        username: 'ZahraTawab',
-        password: '$2b$12$j/J8eclrbICfAXgnpFpjuOWUq/rIfmweo5bj.lTKVde7CpqsK9nm6',
-        firstName: 'Zahra',
-        lastName: 'Al Kubaish',
-        yearOfBirth: 1995,
-        jobTitle: 'Web Developer',
-        education: [{
-            university: 'Imam Abdulrahman bin Faisal University',
-            major: 'Computer Sience',
-            degree: 'Bachelor',
-            startYear: 2017,
-            endYear: 2022,
-            myGPA: 4.71,
-            mainGPA: 5,
-        }],
-        experiance: [{
-            company: 'Saudi Aramco',
-            jobType: 'Intrenship',
-            jobRole: 'Web Developer',
-            location: 'Ras Tanura, Saudi Arabia',
-            startMonth: 6,
-            startYear: 2021,
-            endMonth: 8,
-            endYear: 2021,
-            description: ['Developed C# ASP.NET core web app to improve the work system in the HR department by preparing monitoring software, which required high SQL management.', 'Provided technical support by guiding and implementing updates to tools and technologies of existing application.', 'Evaluated and developed analysis and reporting processes in HR management.']
-        }],
-        city: 'Eastren Proviance',
-        country: 'Saudi Arabia'
-    });
-    await resume.save();
-});
-
-seedDB();
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');

@@ -19,8 +19,12 @@
                                     <div class="row">
                                         <div>
                                             <div class="card-title align-items-center text-center">
-                                                <img src="/imgs/Zahra's Grad 2022-sqr.jpeg" alt="profile picture"
-                                                    class="img-thumbnail rounded-circle" style="max-width:20rem;">
+                                                <div>
+                                                    <img src="/imgs/Zahra's Grad 2022-sqr.jpeg" alt="profile picture"
+                                                        class="img-thumbnail rounded-circle responsive"
+                                                        style="max-width:20rem;">
+                                                </div>
+
                                                 <h1 class="fs-1 text-center fw-bold mygold">
                                                     <%= resume.firstName %>
                                                         <%= resume.lastName %>
@@ -267,10 +271,10 @@
                                 <div class="accordion-body">
                                     <div class="row align-items-center justify-content-center">
                                         <% for(let icon of filenames) {%>
-                                            <div class="col-lg-1 col-md-2 col-sm-3">
+                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">
                                                 <img src="/imgs/skillsIcons/<%= icon %>"
-                                                    class="img-thumbnail border border-0" width="200" height="200"
-                                                    alt="<%= icon %>">
+                                                    class="img-thumbnail border border-0 responsive" width="200"
+                                                    height="200" alt="<%= icon %>">
                                             </div>
                                             <% } %>
                                     </div>

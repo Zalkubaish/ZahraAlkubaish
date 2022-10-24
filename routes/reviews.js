@@ -22,6 +22,7 @@ router.get('/', catchAsync(async (req, res) => {
 }));
 
 
+//TODO: change this to a post request
 router.put('/', catchAsync(async (req, res) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
